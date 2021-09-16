@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "investimento")
-public class Investimento {
+public class Investimento implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

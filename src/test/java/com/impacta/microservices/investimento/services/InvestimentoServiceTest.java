@@ -73,11 +73,11 @@ public class InvestimentoServiceTest {
     @Test
     public void atualizarSaldoContaInvestimento(){
         final Integer contaId = 1;
-        final Double saldo = null;
+        final Double saldo = 10.0;
         final Integer clienteId = 1;
         final Investimento investimento = new Investimento(contaId, clienteId, saldo);
         final SaldoDebito saldoDebito = new SaldoDebito(20.00);
-        final SaldoCredito saldoCredito = new SaldoCredito(20.00);
+        final SaldoCredito saldoCredito = new SaldoCredito(30.00);
 
         when(creditoClient.getSaldoCreditoConta(contaId)).thenReturn(saldoCredito);
         when(debitoClient.getSaldoDebitoConta(contaId)).thenReturn(saldoDebito);
@@ -87,6 +87,6 @@ public class InvestimentoServiceTest {
         final Investimento result = investimentoService.atualizarSaldoConta(contaId);
 
         assertEquals(contaId, result.getContaId());
-        assertThat(0.00).isEqualTo(result.getSaldo());
+        assertThat(10.00).isEqualTo(result.getSaldo());
     }
 }

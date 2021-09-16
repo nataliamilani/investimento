@@ -1,4 +1,4 @@
-CREATE TABLE investimento (id VARCHAR(36) AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS investimento (id VARCHAR(36) AUTO_INCREMENT PRIMARY KEY,
 cliente_id INT(10),
 conta_id INT(10),
 saldo decimal);

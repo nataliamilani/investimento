@@ -31,7 +31,7 @@ public class InvestimentoController {
         return investimento;
     }
 
-    @PutMapping("/{contaId}")
+    @PutMapping("/atualizarSaldo/{contaId}")
     public Investimento alterarSaldoConta(@PathVariable Integer contaId) throws UnknownHostException {
         Investimento saldoAtualizado = investimentoService.atualizarSaldoConta(contaId);
         return saldoAtualizado;

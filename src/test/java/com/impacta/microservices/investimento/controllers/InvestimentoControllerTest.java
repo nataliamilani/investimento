@@ -77,7 +77,7 @@ public class InvestimentoControllerTest {
         when(investimentoService.atualizarSaldoConta(contaId)).thenReturn(investimento);
 
         final ResponseEntity<Investimento> response = template
-                .exchange("/conta/investimento/" + contaId, HttpMethod.PUT, entity, Investimento.class);
+                .exchange("/conta/investimento/atualizarSaldo/" + contaId, HttpMethod.PUT, entity, Investimento.class);
         final Investimento result = response.getBody();
 
         assertEquals(contaId, result.getContaId());
