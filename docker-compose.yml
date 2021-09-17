@@ -1,0 +1,47 @@
+version: '3.5'
+services:
+
+  investimento:
+    container_name: app-investimento
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - '8200:8200'
+    networks:
+      - net-driver
+      - eureka_net-driver
+    external_links:
+      - eureka:eureka
+    depends_on:
+      - db
+    links:
+      - db
+    restart: on-failure
+
+  db:
+    image: mysql
+    container_name: db
+    hostname: db
+    restart: always
+    networks:
+      - net-driver
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_DATABASE: investimentodb
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+networks:
+  net-driver:
+    driver: bridge
+  eureka_net-driver:
+    external: true
+

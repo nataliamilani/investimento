@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "credito")
 public interface CreditoClient {
 
-    @GetMapping(value = "/debito/saldo/investimento/{contaId}")
+    @GetMapping(value = "/credito/saldo/investimento/{contaId}")
     SaldoCredito getSaldoCreditoConta(@PathVariable Integer contaId);
 }
