@@ -27,10 +27,9 @@ services:
     networks:
       - net-driver
     ports:
-      - '3306:3306'
+      - '3304:3306'
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_ALLOW_EMPTY_PASSWORD: yes
       MYSQL_DATABASE: investimentodb
       MYSQL_USER: mysql
       MYSQL_PASSWORD: mysql
