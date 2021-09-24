@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(name = "credito", url = "http://localhost:8081/credito")
+@FeignClient(name = "credito", url = "${clients.credito}")
 public interface CreditoClient {
 
     @RequestMapping(value = "/saldo/contacorrente/{contaId}", method = RequestMethod.GET)

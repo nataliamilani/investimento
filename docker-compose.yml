@@ -11,8 +11,12 @@ services:
     networks:
       - net-driver
       - eureka_net-driver
+      - credito_net-driver
+      - debito_net-driver
     external_links:
       - eureka:eureka
+      - credito:credito
+      - debito:debito
     depends_on:
       - db
     links:
@@ -43,4 +47,7 @@ networks:
     driver: bridge
   eureka_net-driver:
     external: true
-
+  credito_net-driver:
+    external: true
+  debito_net-driver:
+    external: true
