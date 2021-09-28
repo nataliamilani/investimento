@@ -30,6 +30,12 @@ spring:
       mode: always
       data-locations: classpath:data.sql
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, prometheus
+
 clients:
   credito: '${CREDITO_URL:http://localhost:8081/credito}'
   debito: '${DEBITO_URL:http://localhost:8082/debito}'
