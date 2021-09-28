@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(name = "debito", url = "${clients.debito}")
 public interface DebitoClient {
 
-    @RequestMapping(value = "/saldo/contacorrente/{contaId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/saldo/investimento/{contaId}", method = RequestMethod.GET)
     SaldoDebito getSaldoDebitoConta(@PathVariable("contaId") Integer contaId);
 }

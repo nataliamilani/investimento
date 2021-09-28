@@ -8,7 +8,7 @@ public class SaldoDebito {
     private Double valorDebito;
 
     @JsonCreator
-    public SaldoDebito(@JsonProperty("saldo_debito") Double valorDebito) {
+    public SaldoDebito(@JsonProperty("saldoDebito") Double valorDebito) {
         this.valorDebito = valorDebito;
     }
 

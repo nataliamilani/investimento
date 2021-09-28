@@ -10,15 +10,15 @@ import java.io.Serializable;
 @Table(name = "investimento")
 public class Investimento implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    //private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_investimento")
     private Integer id;
 
-    @Transient
-    private String porta;
+    //@Transient
+    //private String porta;
 
     @Column(nullable = false)
     private Double saldo;
@@ -53,13 +53,13 @@ public class Investimento implements Serializable {
 
     public void setSaldo(Double saldo) {this.saldo = saldo;}
 
-    public String getPorta() {return porta;}
+   // public String getPorta() {return porta;}
 
-    public void setPorta(String porta) {this.porta = porta;}
+   // public void setPorta(String porta) {this.porta = porta;}
 
     public Integer getClienteId() {return clienteId;}
 
     public void setClienteId(Integer clienteId) {this.clienteId = clienteId;}
 
-    public static long getSerialversionuid() {return serialVersionUID;}
+   // public static long getSerialversionuid() {return serialVersionUID;}
 }

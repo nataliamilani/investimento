@@ -1,7 +1,10 @@
-CREATE TABLE IF NOT EXISTS investimento (id VARCHAR(36) AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS investimento (
+id_investimento INTEGER AUTO_INCREMENT PRIMARY KEY,
 cliente_id INT(10),
 conta_id INT(10),
-saldo decimal);
+saldo DECIMAL,
+CONSTRAINT uc_containvestimento UNIQUE (conta_id)
+);
 
-INSERT INTO investimento (id, cliente_id ,conta_id, saldo) VALUES (null, 1, 1, null);
-INSERT INTO investimento (id, cliente_id ,conta_id, saldo) VALUES (null, 2, 4, null);
+INSERT IGNORE INTO investimento (cliente_id ,conta_id, saldo) VALUES (1, 1500500004, 16000.00);
+INSERT IGNORE INTO investimento (cliente_id ,conta_id, saldo) VALUES (2, 1500500005, 10000.00);
