@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
+@ComponentScan(basePackages = {"com.impacta.microservices.investimento"})
 public class InvestimentoApplication {
 
 	public static void main(String[] args) {

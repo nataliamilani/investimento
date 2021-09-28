@@ -7,7 +7,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - '8200:8200'
+      - '8080:8080'
     networks:
       - net-driver
       - eureka_net-driver
@@ -25,14 +25,15 @@ services:
 
   db:
     image: mysql
-    container_name: db
-    hostname: db
+    container_name: dbinvestimento
+    hostname: dbinvestimento
     restart: always
     networks:
       - net-driver
     ports:
       - '3309:3306'
     environment:
+      MYSQL_ROOT_HOST: '%'
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: investimentodb
       MYSQL_USER: mysql

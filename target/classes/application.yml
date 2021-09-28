@@ -1,5 +1,5 @@
 server:
-  port: 8200
+  port: 8080
   error:
     include-message: always
     include-stacktrace: never
@@ -20,15 +20,13 @@ spring:
     username: mysql
     password: mysql
   jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
-        ddl-auto: update
-      show-sql: true
-  sql:
-    init:
-      mode: always
-      data-locations: classpath:data.sql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    sql:
+      init:
+        mode: always
+        data-locations: classpath:data.sql
 
 clients:
   credito: '${CREDITO_URL:http://localhost:8081/credito}'
