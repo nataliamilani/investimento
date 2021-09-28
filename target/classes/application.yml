@@ -1,5 +1,8 @@
 server:
   port: 8200
+  error:
+    include-message: always
+    include-stacktrace: never
 eureka:
   instance:
     prefer-ip-address: true
@@ -17,13 +20,15 @@ spring:
     username: mysql
     password: mysql
   jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    sql:
-      init:
-        mode: always
-        data-locations: classpath:data.sql
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        ddl-auto: update
+      show-sql: true
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:data.sql
 
 clients:
   credito: '${CREDITO_URL:http://localhost:8081/credito}'
