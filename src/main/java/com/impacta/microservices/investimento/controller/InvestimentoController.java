@@ -1,15 +1,11 @@
 package com.impacta.microservices.investimento.controller;
 
-import com.impacta.microservices.investimento.controller.response.SaldoContaInvestimentoResponse;
 import com.impacta.microservices.investimento.domain.Investimento;
 import com.impacta.microservices.investimento.service.InvestimentoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.UnknownHostException;
-import java.util.List;
 
 @Tag(name= "Investimento endpoints")
 @RestController

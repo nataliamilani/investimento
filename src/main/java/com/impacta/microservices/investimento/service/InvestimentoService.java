@@ -27,7 +27,7 @@ public class InvestimentoService {
     }
 
     public Investimento buscarConta(Integer contaId) {
-            atualizarSaldoConta(contaId);
+        atualizarSaldoConta(contaId);
 
         if (repository.findByContaId(contaId).isPresent()) {
             return repository.findByContaId(contaId).get();

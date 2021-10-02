@@ -71,7 +71,7 @@ public class InvestimentoServiceTest {
 //    }
 
     @Test(expected = ContaIdNotFoundException.class)
-    public void RetornarContaIdNotFoundExceptionQuandoBuscarContaIdInvestimentoInexistente(){
+    public void RetornarContaIdNotFoundExceptionQuandoBuscarContaIdInexistente(){
         when(investimentoService.buscarConta(888)).thenThrow(ContaIdNotFoundException.class);
     }
 
@@ -95,7 +95,7 @@ public class InvestimentoServiceTest {
 
 
     @Test(expected = ContaIdNotFoundException.class)
-    public void RetornarContaIdNotFoundExceptionQuandoTentarAtualizarContaIdInvestimentoInexistente(){
+    public void RetornarContaIdNotFoundExceptionQuandoTentarAtualizarContaIdInexistente(){
         when(investimentoService.atualizarSaldoConta(888)).thenThrow(ContaIdNotFoundException.class);
     }
 }

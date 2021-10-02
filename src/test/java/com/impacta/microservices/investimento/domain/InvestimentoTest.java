@@ -18,5 +18,4 @@ public class InvestimentoTest {
         assertEquals(saldo, investimento.getSaldo());
         assertEquals(clienteId, investimento.getClienteId());
     }
-
 }
