@@ -2,10 +2,13 @@ package com.impacta.microservices.investimento.repository;
 
 import com.impacta.microservices.investimento.domain.Investimento;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface InvestimentoRepository extends JpaRepository<Investimento,Integer> {
+import java.util.List;
+import java.util.Optional;
 
-    Investimento findByContaId(Integer contaId);
+public interface InvestimentoRepository extends JpaRepository<Investimento, Integer> {
+
+    Optional<Investimento> findByContaId(Integer contaId);
 }

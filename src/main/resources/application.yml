@@ -16,7 +16,7 @@ spring:
     name: investimento
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: '${DATABASE_CONNECTION_URL:jdbc:mysql://localhost:3306/investimentodb}'
+    url: '${DATABASE_CONNECTION_URL:jdbc:mysql://localhost:3309/investimentodb}'
     username: mysql
     password: mysql
   jpa:

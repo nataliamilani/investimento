@@ -3,6 +3,7 @@ package com.impacta.microservices.investimento.service;
 import com.impacta.microservices.investimento.client.CreditoClient;
 import com.impacta.microservices.investimento.client.DebitoClient;
 import com.impacta.microservices.investimento.domain.Investimento;
+import com.impacta.microservices.investimento.exceptions.ContaIdNotFoundException;
 import com.impacta.microservices.investimento.repository.InvestimentoRepository;
 import org.springframework.stereotype.Component;
 
@@ -26,20 +27,25 @@ public class InvestimentoService {
     }
 
     public Investimento buscarConta(Integer contaId) {
-        return repository.findByContaId(contaId);
+            atualizarSaldoConta(contaId);
+
+        if (repository.findByContaId(contaId).isPresent()) {
+            return repository.findByContaId(contaId).get();
+        }
+        return null;
     }
 
     public Investimento atualizarSaldoConta(Integer contaId) {
+        var investimento = repository.findByContaId(contaId)
+                .orElseThrow(() -> new ContaIdNotFoundException("Não encontrada conta id: " + contaId));
+
         var debito = debitoClient.getSaldoDebitoConta(contaId);
         var credito = creditoClient.getSaldoCreditoConta(contaId);
 
         double saldoTotalConta = credito.getValorCredito() - debito.getValorDebito();
 
-        var investimento = repository.findByContaId(contaId);
-
         investimento.setSaldo(saldoTotalConta);
 
         return repository.save(investimento);
     }
-
 }

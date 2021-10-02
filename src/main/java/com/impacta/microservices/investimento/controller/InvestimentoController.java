@@ -1,5 +1,6 @@
 package com.impacta.microservices.investimento.controller;
 
+import com.impacta.microservices.investimento.controller.response.SaldoContaInvestimentoResponse;
 import com.impacta.microservices.investimento.domain.Investimento;
 import com.impacta.microservices.investimento.service.InvestimentoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.UnknownHostException;
+import java.util.List;
 
 @Tag(name= "Investimento endpoints")
 @RestController
@@ -32,15 +34,8 @@ public class InvestimentoController {
         return investimentoService.criarInvestimento(investimentoRequest);
     }
 
-    @GetMapping("/{contaId}")
-    public Investimento buscarContaId(@PathVariable Integer contaId) throws UnknownHostException {
-       Investimento investimento = investimentoService.buscarConta(contaId);
-        return investimento;
-    }
-
-    @PutMapping("/atualizarSaldo/{contaId}")
-    public Investimento alterarSaldoConta(@PathVariable Integer contaId) throws UnknownHostException {
-        Investimento saldoAtualizado = investimentoService.atualizarSaldoConta(contaId);
-        return saldoAtualizado;
+    @GetMapping("/consulta/{contaId}")
+    public Investimento consultarContaId(@PathVariable Integer contaId) {
+        return investimentoService.buscarConta(contaId);
     }
 }
