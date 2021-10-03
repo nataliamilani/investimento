@@ -1,15 +1,17 @@
 package com.impacta.microservices.investimento.client;
 
 
-import com.impacta.microservices.investimento.client.response.SaldoDebito;
+import com.impacta.microservices.investimento.client.request.CriarDebitoRequest;
+import com.impacta.microservices.investimento.client.response.SaldoDebitoResponse;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @FeignClient(name = "debito", url = "${clients.debito}")
 public interface DebitoClient {
 
     @RequestMapping(value = "/saldo/investimento/{contaId}", method = RequestMethod.GET)
-    SaldoDebito getSaldoDebitoConta(@PathVariable("contaId") Integer contaId);
+    SaldoDebitoResponse getSaldoDebitoConta(@PathVariable("contaId") Integer contaId);
+
+    @PostMapping()
+    CriarDebitoRequest criarDebito(@RequestBody CriarDebitoRequest debitoRequest);
 }

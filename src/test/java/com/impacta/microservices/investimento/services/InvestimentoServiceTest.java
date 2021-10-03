@@ -3,6 +3,7 @@ package com.impacta.microservices.investimento.services;
 import com.impacta.microservices.investimento.client.CreditoClient;
 import com.impacta.microservices.investimento.client.DebitoClient;
 import com.impacta.microservices.investimento.domain.Investimento;
+import com.impacta.microservices.investimento.exceptions.ContaIdExistenteBadRequestException;
 import com.impacta.microservices.investimento.exceptions.ContaIdNotFoundException;
 import com.impacta.microservices.investimento.repository.InvestimentoRepository;
 import com.impacta.microservices.investimento.service.InvestimentoService;
@@ -56,6 +57,12 @@ public class InvestimentoServiceTest {
         assertEquals(clienteId, result.getClienteId());
     }
 
+//    @Test(expected = ContaIdExistenteBadRequestException.class)
+//    public void RetornarContaIdExistenteBadRequestExceptionQuandoContaIdJaExistir() {
+//        final Investimento investimento = new Investimento(1,1,0.0);
+//        when(investimentoService.criarInvestimento(investimento)).thenThrow(ContaIdExistenteBadRequestException.class);
+//    }
+
 //    @Test
 //    public void buscarContaInvestimento(){
 //        final Integer contaId = 1;
@@ -98,4 +105,38 @@ public class InvestimentoServiceTest {
     public void RetornarContaIdNotFoundExceptionQuandoTentarAtualizarContaIdInexistente(){
         when(investimentoService.atualizarSaldoConta(888)).thenThrow(ContaIdNotFoundException.class);
     }
+
+//    @Test
+//    public void aplicarValorInvestimento(){
+//        final Integer contaId = 1;
+//        final double saldo = 0.0;
+//        final Integer clienteId = 1;
+//        final Integer contaIdContaCorrente = 2;
+//        final double valorAplicar = 20.0;
+//        final Investimento investimento = new Investimento(contaId, clienteId, saldo);
+//
+//        when(investimentoRepository.findByContaId(contaId).get()).thenReturn(investimento);
+//
+//        final Investimento result = investimentoService.aplicarInvestimento(investimento.getContaId(), contaIdContaCorrente, valorAplicar);
+//
+//        assertEquals(contaId, result.getContaId());
+//        assertEquals(clienteId, result.getClienteId());
+//    }
+
+//    @Test
+//    public void resgatarValorInvestimento(){
+//        final Integer contaId = 1;
+//        final double saldo = 0.0;
+//        final Integer clienteId = 1;
+//        final Integer contaIdContaCorrente = 2;
+//        final double valorAplicar = 20.0;
+//        final Investimento investimento = new Investimento(contaId, clienteId, saldo);
+//
+//        when(investimentoRepository.findByContaId(contaId).get()).thenReturn(investimento);
+//
+//        final Investimento result = investimentoService.resgatarInvestimento(investimento.getContaId(), contaIdContaCorrente, valorAplicar);
+//
+//        assertEquals(contaId, result.getContaId());
+//        assertEquals(clienteId, result.getClienteId());
+//    }
 }

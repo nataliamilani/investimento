@@ -1,5 +1,6 @@
 package com.impacta.microservices.investimento.controller;
 
+import com.impacta.microservices.investimento.controller.request.OperacaoInvestimentoRequest;
 import com.impacta.microservices.investimento.domain.Investimento;
 import com.impacta.microservices.investimento.service.InvestimentoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -33,5 +34,23 @@ public class InvestimentoController {
     @GetMapping("/consulta/{contaId}")
     public Investimento consultarContaId(@PathVariable Integer contaId) {
         return investimentoService.buscarConta(contaId);
+    }
+
+    @PatchMapping("/aplicar/{contaIdInvestimento}")
+    @ResponseStatus(HttpStatus.OK)
+    public Investimento aplicarInvestimento(@RequestBody OperacaoInvestimentoRequest aplicacaoRequest,
+                                            @PathVariable Integer contaIdInvestimento){
+        return investimentoService.aplicarInvestimento(contaIdInvestimento,
+                aplicacaoRequest.getContaIdContaCorrente(),
+                aplicacaoRequest.getValorAplicar());
+    }
+
+    @PatchMapping("/resgatar/{contaIdInvestimento}")
+    @ResponseStatus(HttpStatus.OK)
+    public Investimento resgatarInvestimento(@RequestBody OperacaoInvestimentoRequest resgateRequest,
+                                             @PathVariable Integer contaIdInvestimento){
+        return investimentoService.resgatarInvestimento(contaIdInvestimento,
+                resgateRequest.getContaIdContaCorrente(),
+                resgateRequest.getValorAplicar());
     }
 }

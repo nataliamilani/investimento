@@ -1,5 +1,6 @@
 package com.impacta.microservices.investimento.controllers;
 
+import com.impacta.microservices.investimento.controller.request.OperacaoInvestimentoRequest;
 import com.impacta.microservices.investimento.domain.Investimento;
 import com.impacta.microservices.investimento.service.InvestimentoService;
 import org.junit.Test;
@@ -61,6 +62,52 @@ public class InvestimentoControllerTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
         assertEquals(contaId, result.getContaId());
+        assertEquals(clienteId, result.getClienteId());
+    }
+
+    @Test
+    public void aplicarNaContaInvestimento(){
+        final Integer contaIdInvestimento = 1;
+        final Integer contaIdContaCorrente = 1;
+        final double saldo = 20.0;
+        final Integer clienteId = 1;
+        final Investimento investimento = new Investimento(contaIdInvestimento, clienteId, saldo);
+        final OperacaoInvestimentoRequest aplicacaoRequest = new OperacaoInvestimentoRequest(contaIdContaCorrente, 20.00);
+
+        when(investimentoService.aplicarInvestimento(contaIdInvestimento, contaIdContaCorrente, 20.0)).thenReturn(investimento);
+
+        final var request = new HttpEntity<>(aplicacaoRequest);
+
+        final ResponseEntity<Investimento> response = template
+                .exchange("/conta/investimento/aplicar/" + contaIdInvestimento, HttpMethod.PATCH , request, Investimento.class);
+        final Investimento result = response.getBody();
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+
+        assertEquals(contaIdInvestimento, result.getContaId());
+        assertEquals(clienteId, result.getClienteId());
+    }
+
+    @Test
+    public void resgatarNaContaInvestimento(){
+        final Integer contaIdInvestimento = 1;
+        final Integer contaIdContaCorrente = 1;
+        final double saldo = 20.0;
+        final Integer clienteId = 1;
+        final Investimento investimento = new Investimento(contaIdInvestimento, clienteId, saldo);
+        final OperacaoInvestimentoRequest aplicacaoRequest = new OperacaoInvestimentoRequest(contaIdContaCorrente, 20.00);
+
+        when(investimentoService.resgatarInvestimento(contaIdInvestimento, contaIdContaCorrente, 20.0)).thenReturn(investimento);
+
+        final var request = new HttpEntity<>(aplicacaoRequest);
+
+        final ResponseEntity<Investimento> response = template
+                .exchange("/conta/investimento/resgatar/" + contaIdInvestimento, HttpMethod.PATCH , request, Investimento.class);
+        final Investimento result = response.getBody();
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+
+        assertEquals(contaIdInvestimento, result.getContaId());
         assertEquals(clienteId, result.getClienteId());
     }
 }

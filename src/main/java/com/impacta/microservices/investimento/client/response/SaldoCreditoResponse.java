@@ -3,12 +3,12 @@ package com.impacta.microservices.investimento.client.response;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SaldoCredito {
+public class SaldoCreditoResponse {
 
     private Double valorCredito;
 
     @JsonCreator
-    public SaldoCredito(@JsonProperty("saldo_credito") Double valorCredito) {
+    public SaldoCreditoResponse(@JsonProperty("saldo_credito") Double valorCredito) {
         this.valorCredito = valorCredito;
     }
 
