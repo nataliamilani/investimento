@@ -6,14 +6,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OperacaoInvestimentoRequest {
 
     private Integer contaIdContaCorrente;
-    private double valorAplicar;
+    private double valor;
 
 
     @JsonCreator
     public OperacaoInvestimentoRequest(@JsonProperty("conta_id_conta_corrente") Integer contaIdContaCorrente,
-                                       @JsonProperty("valor_aplicar") double valorAplicar) {
+                                       @JsonProperty("valor") double valor) {
         this.contaIdContaCorrente = contaIdContaCorrente;
-        this.valorAplicar = valorAplicar;
+        this.valor = valor;
     }
 
     public Integer getContaIdContaCorrente() {return contaIdContaCorrente;}
@@ -22,9 +22,9 @@ public class OperacaoInvestimentoRequest {
         this.contaIdContaCorrente = contaIdContaCorrente;
     }
 
-    public double getValorAplicar() {return valorAplicar;}
+    public double getValor() {return valor;}
 
-    public void setValorAplicar(double valorAplicar) {
-        this.valorAplicar = valorAplicar;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 }

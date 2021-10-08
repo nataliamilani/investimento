@@ -42,7 +42,7 @@ public class InvestimentoController {
                                             @PathVariable Integer contaIdInvestimento){
         return investimentoService.aplicarInvestimento(contaIdInvestimento,
                 aplicacaoRequest.getContaIdContaCorrente(),
-                aplicacaoRequest.getValorAplicar());
+                aplicacaoRequest.getValor());
     }
 
     @PatchMapping("/resgatar/{contaIdInvestimento}")
@@ -51,6 +51,6 @@ public class InvestimentoController {
                                              @PathVariable Integer contaIdInvestimento){
         return investimentoService.resgatarInvestimento(contaIdInvestimento,
                 resgateRequest.getContaIdContaCorrente(),
-                resgateRequest.getValorAplicar());
+                resgateRequest.getValor());
     }
 }
